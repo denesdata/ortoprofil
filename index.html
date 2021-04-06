@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <script src="//d3plus.org/js/d3.js"></script>
+    <script src="//d3plus.org/js/d3plus.js"></script>
+    <style>
+        .img {
+            width: calc(100% + 160px);
+            margin-left: -90px;
+        }
+        
+        #container {
+            position: fixed;
+            top: 0px;
+        }
+        
+        #drop {
+            position: fixed;
+            right: 30px;
+            top: 10px;
+        }
+        
+        #sel {
+            position: fixed;
+            left: 30px;
+            top: 10px;
+        }
+        
+        #ro {
+            margin-top: -40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='container'>
+        <img id='main' class='img' src='figs/Satu Mare_0.png'>
+        <img id='ro' class='img' src='figs/România_0.png'>
+    </div>
+    <div id='sel'>
+        <legend for="toggles">Completat de:</legend>
+        <input type="radio" name="toggles" value="a0" checked>
+        <label for="a0">Oricine</label>
+        <input type="radio" name="toggles" value="a1">
+        <label for="a1">Pacient</label>
+        <input type="radio" name="toggles" value="a2">
+        <label for="a2">Aparținător</label>
+    </div>
+    <div id='drop'></div>
+
+    <script>
+        dropdata = [{
+            // 'county': 'România'
+        }, {
+            'county': 'Alba'
+        }, {
+            'county': 'Arad'
+        }, {
+            'county': 'Argeș'
+        }, {
+            'county': 'Bacău'
+        }, {
+            'county': 'Bihor'
+        }, {
+            'county': 'Bistrița-Năsăud'
+        }, {
+            'county': 'Botoșani'
+        }, {
+            'county': 'Brașov'
+        }, {
+            'county': 'Brăila'
+        }, {
+            'county': 'București'
+        }, {
+            'county': 'Buzău'
+        }, {
+            'county': 'Caraș-Severin'
+        }, {
+            'county': 'Cluj'
+        }, {
+            'county': 'Constanța'
+        }, {
+            'county': 'Covasna'
+        }, {
+            'county': 'Călărași'
+        }, {
+            'county': 'Dolj'
+        }, {
+            'county': 'Dâmbovița'
+        }, {
+            'county': 'Galați'
+        }, {
+            'county': 'Giurgiu'
+        }, {
+            'county': 'Gorj'
+        }, {
+            'county': 'Harghita'
+        }, {
+            'county': 'Hunedoara'
+        }, {
+            'county': 'Ialomița'
+        }, {
+            'county': 'Iași'
+        }, {
+            'county': 'Ilfov'
+        }, {
+            'county': 'Maramureș'
+        }, {
+            'county': 'Mehedinți'
+        }, {
+            'county': 'Mureș'
+        }, {
+            'county': 'Neamț'
+        }, {
+            'county': 'Olt'
+        }, {
+            'county': 'Prahova'
+        }, {
+            'county': 'Satu Mare'
+        }, {
+            'county': 'Suceava'
+        }, {
+            'county': 'Sălaj'
+        }, {
+            'county': 'Teleorman'
+        }, {
+            'county': 'Timiș'
+        }, {
+            'county': 'Tulcea'
+        }, {
+            'county': 'Vaslui'
+        }, {
+            'county': 'Vrancea'
+        }, {
+            'county': 'Vâlcea'
+        }, {
+            'county': '- OPSNAJ'
+        }]
+
+        var county = 'Alba';
+        var a = 0;
+
+        function select(county, a) {
+            d3.select('#main').attr('src', 'figs/' + county + '_' + a + '.png');
+            d3.select('#ro').attr('src', 'figs/' + 'România' + '_' + a + '.png');
+        }
+        var toggles = d3plus.form()
+            .data("[name=toggles]")
+            .focus('a' + a, function(d) {
+                a = d.slice(1);
+                select(county, a)
+            })
+            .draw()
+
+        var dropdown = d3plus.form()
+            .data(dropdata)
+            .container("#drop")
+            .focus(county, function(d) {
+                county = d;
+                select(county, a)
+            })
+            .id("county")
+            .width(245)
+            .keywords("kw")
+            // .icon("flag")
+            // .font(font)
+            // .text("base")
+            .type("drop")
+            .draw()
+    </script>
+</body>
+
+</html>
