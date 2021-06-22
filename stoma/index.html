@@ -37,7 +37,7 @@
 
 <body>
     <div id='container'>
-        <img id='main' class='img' src='figs/Satu Mare_0.png'>
+        <img id='main' class='img' src='figs/Satu Mare_0.png' onerror="this.src='figs/error.png';">
         <img id='ro' class='img' src='figs/România_0.png'>
     </div>
     <div id='sel'>
@@ -140,6 +140,8 @@
             'county': 'Vâlcea'
         }, {
             'county': '- OPSNAJ'
+        }, {
+            'county': '- Toate județele'
         }]
 
         var county = 'Alba';
