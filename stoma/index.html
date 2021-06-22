@@ -121,9 +121,11 @@
         }, {
             'county': 'Satu Mare'
         }, {
-            'county': 'Suceava'
-        }, {
             'county': 'Sălaj'
+        }, {
+            'county': 'Sibiu'
+        }, {
+            'county': 'Suceava'
         }, {
             'county': 'Teleorman'
         }, {
@@ -147,7 +149,6 @@
             d3.select('#main').attr('src', 'figs/' + county + '_' + a + '.png');
             d3.select('#ro').attr('src', 'figs/' + 'România' + '_' + a + '.png');
         }
-
         var toggles = d3plus.form()
             .data("[name=toggles]")
             .focus('a' + a, function(d) {
